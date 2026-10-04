@@ -1,5 +1,7 @@
 # youtube-shorts-daily-panel
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23133817.svg)](https://doi.org/10.5281/zenodo.23133817)
+
 Code and derived data for a daily panel of #shorts-labeled YouTube videos surfaced by a fixed Japan-region search configuration, observed once a day from June to October 2026. The panel follows each video from shortly after publication for up to 35 days and records views, likes, comments and availability. The derived data describe the post-publication view dynamics and the disappearance (deletion or privatisation) of 26,705 videos first observed within 24 hours of publication. Details of the associated article will be added when it is published. Package built on 2026-10-04.
 
 ## What is here
@@ -50,4 +52,4 @@ Code: MIT License (see `LICENSE`). Data files in `data/`: CC BY 4.0 (see `data/L
 
 ## Citation
 
-A DOI for each archived release is issued through Zenodo. Author and article details will be added here when the associated article is published.
+Archived releases are available on Zenodo. The concept DOI https://doi.org/10.5281/zenodo.23133817 always resolves to the latest version; each release also has its own version DOI. Author and article details will be added here when the associated article is published.
