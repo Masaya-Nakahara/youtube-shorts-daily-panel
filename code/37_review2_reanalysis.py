@@ -41,7 +41,14 @@ def load_mod(name, path):
 m28 = load_mod("m28", HERE / "28_panel_lifecycle.py")
 m36 = load_mod("m36", HERE / "36_review_reanalysis.py")
 cboot, km, km_boot, rate_table = m36.cboot, m36.km, m36.km_boot, m36.rate_table
-STEM = "panel_lifecycle_20261003_231558"
+def resolve_stem(explicit=None) -> str:
+    """Basename of the 28_panel_lifecycle.py outputs in reports/ (newest by default)."""
+    if explicit:
+        return explicit
+    cands = sorted((ROOT / "reports").glob("panel_lifecycle_*_traj.parquet"))
+    if not cands:
+        raise SystemExit("no reports/panel_lifecycle_*_traj.parquet found: run 28_panel_lifecycle.py first, or pass --stem")
+    return cands[-1].name[: -len("_traj.parquet")]
 SEG_ORDER = m28.SEG_ORDER
 PTS = [7, 14, 21, 28, 35]
 GRID = list(range(0, 36))
@@ -67,7 +74,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--boot", type=int, default=1000)
     ap.add_argument("--km-boot", type=int, default=200)
+    ap.add_argument("--review", type=Path, default=None, help="review_reanalysis JSON from 36_review_reanalysis.py (default: the newest)")
+    ap.add_argument("--stem", default=None, help="basename of the 28_panel_lifecycle.py outputs in reports/ (default: the newest panel_lifecycle_*_traj.parquet)")
     args = ap.parse_args()
+    stem = resolve_stem(args.stem)
     rng = np.random.default_rng(0); B = args.boot; KB = args.km_boot
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     OUT = {"generated_at": ts, "boot": B, "km_boot": KB}
@@ -75,8 +85,8 @@ def main() -> int:
     log("loading ...")
     df = m28.load_panel(ROOT / "data/panel/panel_observations.jsonl")
     df["observed_at"] = pd.to_datetime(df.observed_at, utc=True); df["published_at"] = pd.to_datetime(df.published_at, utc=True)
-    traj = pd.read_parquet(ROOT / "reports" / f"{STEM}_traj.parquet"); traj.index.name = "video_id"
-    rv = sorted(glob.glob(str(ROOT / "reports/review_reanalysis_*.json")))[-1]
+    traj = pd.read_parquet(ROOT / "reports" / f"{stem}_traj.parquet"); traj.index.name = "video_id"
+    rv = str(args.review) if args.review else sorted(glob.glob(str(ROOT / "reports/review_reanalysis_*.json")))[-1]
     V = json.load(open(rv, encoding="utf-8")); OUT["review_json"] = Path(rv).name
     E = pd.read_parquet(ROOT / V["disappearance_v2"]["per_video_file"])
     pv = pd.read_parquet(ROOT / V["like_rate_v2"]["per_video_file"])

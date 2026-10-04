@@ -23,7 +23,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
-spec = importlib.util.spec_from_file_location("m28", ROOT / "scripts/28_panel_lifecycle.py")
+spec = importlib.util.spec_from_file_location("m28", Path(__file__).resolve().parent / "28_panel_lifecycle.py")
 m28 = importlib.util.module_from_spec(spec); spec.loader.exec_module(m28)
 
 ROWS = ["uploader_removed", "no_reason", "terminated", "policy", "copyright", "private", "exists"]
@@ -46,12 +46,17 @@ def table(d: pd.DataFrame) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--probe", type=Path, default=ROOT / "data/probe/missing_reasons_20261003_230351.jsonl")
+    ap.add_argument("--probe", type=Path, default=None, help="probe output of 30_probe_missing_reason.py (default: the newest data/probe/missing_reasons_*.jsonl)")
     ap.add_argument("--ledger", type=Path, default=ROOT / "state/panel_cohort.json")
     ap.add_argument("--raw-glob", default=str(ROOT / "data/raw/daily_2026*.jsonl"))
     ap.add_argument("--seed-age-max", type=float, default=1.0, help="first observation within this many days of publication")
     ap.add_argument("--done-days", type=float, default=35.0)
     args = ap.parse_args()
+    if args.probe is None:
+        cands = sorted((ROOT / "data/probe").glob("missing_reasons_*.jsonl"))
+        if not cands:
+            raise SystemExit("no data/probe/missing_reasons_*.jsonl found; run 30_probe_missing_reason.py first or pass --probe")
+        args.probe = cands[-1]
 
     df = pd.read_json(args.probe, lines=True).set_index("video_id")
     led = pd.DataFrame.from_dict(json.load(open(args.ledger, encoding="utf-8"))["videos"], orient="index")

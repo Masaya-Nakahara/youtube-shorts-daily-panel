@@ -343,11 +343,11 @@
   "rate_capped_3_per_channel": 0.052733985232488526,
   "rate_excl_top5_channels": 0.045360525456326885,
   "top5_channel_events": {
-   "channel_key:13695": 169,
-   "channel_key:2317": 18,
-   "channel_key:11489": 17,
-   "channel_key:4179": 11,
-   "channel_key:3407": 10
+   "channel_key:13826": 169,
+   "channel_key:2338": 18,
+   "channel_key:11601": 17,
+   "channel_key:4222": 11,
+   "channel_key:3444": 10
   },
   "music": {
    "n": 3352,

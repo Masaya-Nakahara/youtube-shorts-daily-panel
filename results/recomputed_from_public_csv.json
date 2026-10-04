@@ -1,0 +1,275 @@
+{
+ "n_tracked_videos": 59250,
+ "n_analytic": 26705,
+ "n_channels_analytic": 12826,
+ "share_median_pct": {
+  "day1": 44.9,
+  "day3": 80.5,
+  "day7": 94.3,
+  "day14": 98.4
+ },
+ "share_view_weighted_pct": {
+  "day1": 21.7,
+  "day2": 37.8,
+  "day3": 46.1,
+  "day7": 71.0,
+  "day14": 84.5
+ },
+ "median_V28": 62077.4,
+ "top1pct_share_of_views": 0.319,
+ "regressions": {
+  "day1": {
+   "R2_cumulative": 0.901,
+   "slope_cumulative": 1.116,
+   "n_positive_increment": 26677,
+   "R2_increment": 0.792,
+   "slope_increment": 1.285
+  },
+  "day2": {
+   "R2_cumulative": 0.946,
+   "slope_cumulative": 1.086,
+   "n_positive_increment": 26564,
+   "R2_increment": 0.744,
+   "slope_increment": 1.305
+  },
+  "day3": {
+   "R2_cumulative": 0.965,
+   "slope_cumulative": 1.081,
+   "n_positive_increment": 26508,
+   "R2_increment": 0.75,
+   "slope_increment": 1.356
+  },
+  "day7": {
+   "R2_cumulative": 0.99,
+   "slope_cumulative": 1.037,
+   "n_positive_increment": 26230,
+   "R2_increment": 0.744,
+   "slope_increment": 1.388
+  },
+  "day14": {
+   "R2_cumulative": 0.997,
+   "slope_cumulative": 1.019
+  }
+ },
+ "late_growth_pct": {
+  "ge2x": 3.3,
+  "ge1_5x": 9.6,
+  "ge3x": 1.0,
+  "reaccelerated": 1.6,
+  "median_ratio_V28_over_V7": 1.06
+ },
+ "late_ge2x_by_day7_quintile_pct": {
+  "Q1 (lowest)": 0.7,
+  "Q2": 1.3,
+  "Q3": 2.1,
+  "Q4": 4.9,
+  "Q5 (highest)": 7.7
+ },
+ "share_day3_by_category_pct": {
+  "Gaming": 70.4,
+  "Film & Animation": 71.4,
+  "People & Blogs": 73.0,
+  "Comedy": 74.7,
+  "Music": 76.3,
+  "Sports": 82.5,
+  "Autos & Vehicles": 84.1,
+  "Pets & Animals": 86.9,
+  "Travel & Events": 92.3
+ },
+ "share_day3_by_subscriber_quintile_pct": {
+  "S1 (smallest)": 95.2,
+  "S2": 84.2,
+  "S3": 77.4,
+  "S4": 73.8,
+  "S5 (largest)": 69.7
+ },
+ "share_day3_by_location_pct": {
+  "JP": 76.6,
+  "US": 79.4,
+  "IN": 83.0,
+  "other": 80.0,
+  "unknown": 80.8
+ },
+ "median_V28_by_location": {
+  "JP": 29737.800000000003,
+  "US": 77954.85,
+  "IN": 61653.0,
+  "other": 67585.3,
+  "unknown": 69696.0
+ },
+ "like_ratio": {
+  "n": 22216,
+  "median_late_over_early": 0.67,
+  "share_declined_pct": 88.9,
+  "median_early_pct": 2.01,
+  "median_late_pct": 1.24,
+  "by_day28_quintile": {
+   "Q1 (lowest)": 0.961,
+   "Q2": 0.699,
+   "Q3": 0.641,
+   "Q4": 0.572,
+   "Q5 (highest)": 0.559
+  },
+  "by_location": {
+   "JP": 0.621,
+   "US": 0.687,
+   "IN": 0.682,
+   "other": 0.662,
+   "unknown": 0.682
+  }
+ },
+ "like_rate_stages": {
+  "n": 12830,
+  "median_age_first_observation_days": 0.21,
+  "median_ratios": {
+   "day1/early": 0.63,
+   "day3/day1": 0.958,
+   "day7/day3": 0.98,
+   "day28/day7": 0.986,
+   "late/day28": 0.999,
+   "day28/day1": 0.907,
+   "late/early": 0.544
+  }
+ },
+ "like_count_not_retrieved_pct": {
+  "all": 13.2,
+  "JP": 2.9,
+  "US": 11.5,
+  "IN": 25.0
+ },
+ "disappearance": {
+  "n_24h_cohort": 47563,
+  "n_passed_35d": 28413,
+  "events_35d": 1507,
+  "events_three_misses": 1416,
+  "events_probe_confirmed": 91,
+  "rate_35d_pct": 5.3,
+  "rate_35d_three_misses_only_pct": 5.0,
+  "n_passed_7d": 43946,
+  "rate_7d_pct": 1.8,
+  "km_pct": {
+   "day7": 1.7,
+   "day14": 2.8,
+   "day21": 3.5,
+   "day28": 4.3,
+   "day35": 5.1
+  },
+  "km_at_risk": {
+   "day0": 47563,
+   "day7": 42582,
+   "day14": 38211,
+   "day21": 34519,
+   "day28": 30443,
+   "day35": 26342
+  },
+  "by_location_pct": {
+   "JP": 2.0,
+   "US": 5.7,
+   "IN": 7.2,
+   "other": 3.9,
+   "unknown": 5.9
+  },
+  "n_by_location": {
+   "JP": 2570,
+   "US": 4143,
+   "IN": 7978,
+   "other": 8040,
+   "unknown": 5682
+  },
+  "by_category_pct": {
+   "Autos & Vehicles": 5.0,
+   "Comedy": 3.4,
+   "Film & Animation": 6.6,
+   "Gaming": 3.0,
+   "Music": 10.7,
+   "People & Blogs": 4.3,
+   "Pets & Animals": 5.4,
+   "Sports": 4.9,
+   "Travel & Events": 4.3
+  },
+  "km_by_location_pct": {
+   "JP": {
+    "day7": 0.7,
+    "day14": 1.2,
+    "day21": 1.3,
+    "day28": 1.8,
+    "day35": 2.0
+   },
+   "US": {
+    "day7": 1.2,
+    "day14": 2.3,
+    "day21": 3.2,
+    "day28": 4.4,
+    "day35": 5.8
+   },
+   "IN": {
+    "day7": 2.9,
+    "day14": 4.3,
+    "day21": 5.2,
+    "day28": 6.0,
+    "day35": 6.8
+   },
+   "other": {
+    "day7": 1.2,
+    "day14": 2.0,
+    "day21": 2.6,
+    "day28": 3.2,
+    "day35": 3.6
+   },
+   "unknown": {
+    "day7": 1.8,
+    "day14": 2.8,
+    "day21": 3.8,
+    "day28": 4.8,
+    "day35": 5.7
+   }
+  },
+  "median_first_failed_retrieval_age_days": 11.5,
+  "three_miss_rule_ledger_cohort": {
+   "n_passed_35d": 28428,
+   "events": 1416,
+   "rate_pct": 5.0
+  }
+ },
+ "displayed_reasons": {
+  "n": 2005,
+  "counts": {
+   "removed_no_reason": 742,
+   "removed_uploader_message": 536,
+   "account_terminated_or_closed": 339,
+   "private": 282,
+   "exists_at_probe": 59,
+   "removed_policy": 26,
+   "removed_copyright": 21
+  },
+  "shares_pct": {
+   "removed_no_reason": 37.0,
+   "removed_uploader_message": 26.7,
+   "account_terminated_or_closed": 16.9,
+   "private": 14.1,
+   "exists_at_probe": 2.9,
+   "removed_policy": 1.3,
+   "removed_copyright": 1.0
+  },
+  "n_35d": 1507,
+  "shares_35d_pct": {
+   "removed_no_reason": 48.6,
+   "account_terminated_or_closed": 16.2,
+   "removed_uploader_message": 15.7,
+   "private": 14.2,
+   "exists_at_probe": 3.5,
+   "removed_copyright": 1.0,
+   "removed_policy": 0.8
+  }
+ },
+ "survivorship": {
+  "n_passed_28d": 32508,
+  "lost_before_28d": 1461,
+  "share_pct": 4.5,
+  "lost_first_failed_before_3d": 289,
+  "lost_music_pct": 26.5,
+  "lost_india_pct": 39.4,
+  "analytic_music_pct": 11.7,
+  "analytic_india_pct": 27.9
+ }
+}

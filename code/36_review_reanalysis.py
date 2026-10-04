@@ -41,7 +41,14 @@ def load_mod(name, path):
 HERE = Path(__file__).resolve().parent
 m28 = load_mod("m28", HERE / "28_panel_lifecycle.py")
 m30 = load_mod("m30", HERE / "30_probe_missing_reason.py")
-STEM = "panel_lifecycle_20261003_231558"
+def resolve_stem(explicit=None) -> str:
+    """Basename of the 28_panel_lifecycle.py outputs in reports/ (newest by default)."""
+    if explicit:
+        return explicit
+    cands = sorted((ROOT / "reports").glob("panel_lifecycle_*_traj.parquet"))
+    if not cands:
+        raise SystemExit("no reports/panel_lifecycle_*_traj.parquet found: run 28_panel_lifecycle.py first, or pass --stem")
+    return cands[-1].name[: -len("_traj.parquet")]
 AGES = m28.AGES; SEG_ORDER = m28.SEG_ORDER
 
 
@@ -110,12 +117,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--boot", type=int, default=1000)
     ap.add_argument("--km-boot", type=int, default=200)
+    ap.add_argument("--stem", default=None, help="basename of the 28_panel_lifecycle.py outputs in reports/ (default: the newest panel_lifecycle_*_traj.parquet)")
     ap.add_argument("--probe", action="store_true", help="probe watch pages of videos aged out with an unconfirmed missing streak")
     ap.add_argument("--probe-delay", type=float, default=1.0)
     args = ap.parse_args()
+    stem = resolve_stem(args.stem)
     rng = np.random.default_rng(0); B = args.boot
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    OUT = {"generated_at": ts, "boot": B}
+    OUT = {"generated_at": ts, "boot": B, "input_stem": stem}
 
     log("loading ...")
     df = m28.load_panel(ROOT / "data/panel/panel_observations.jsonl")
@@ -124,8 +133,8 @@ def main() -> int:
     led["published_at"] = pd.to_datetime(led.published_at, utc=True)
     meta = m28.load_meta(str(ROOT / "data/raw/daily_2026*.jsonl"))
     if "video_id" in meta.columns: meta = meta.set_index("video_id")
-    traj = pd.read_parquet(ROOT / "reports" / f"{STEM}_traj.parquet"); traj.index.name = "video_id"
-    R = json.load(open(ROOT / "reports" / f"{STEM}.json", encoding="utf-8"))
+    traj = pd.read_parquet(ROOT / "reports" / f"{stem}_traj.parquet"); traj.index.name = "video_id"
+    R = json.load(open(ROOT / "reports" / f"{stem}.json", encoding="utf-8"))
     end = df.observed_at.max()
     run_times = np.sort(df.groupby("run_id").observed_at.first().to_numpy())
 
