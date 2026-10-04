@@ -1,0 +1,8 @@
+The files in this data/ directory are released under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+They contain public video identifiers and measures derived from public view,
+like and availability counts obtained through the YouTube Data API v3. They do
+not contain the daily raw observations, which cannot be redistributed under the
+YouTube API Services Terms of Service.

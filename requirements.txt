@@ -1,0 +1,7 @@
+google-api-python-client>=2.0
+pandas>=2.0
+numpy>=1.26
+scipy>=1.11
+pyarrow>=15
+matplotlib>=3.8
+requests>=2.31
