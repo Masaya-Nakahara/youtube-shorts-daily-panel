@@ -5,4 +5,4 @@ https://creativecommons.org/licenses/by/4.0/
 They contain public video identifiers and measures derived from public view,
 like and availability counts obtained through the YouTube Data API v3. They do
 not contain the daily raw observations, which cannot be redistributed under the
-YouTube API Services Terms of Service.
+YouTube API Services Terms of Service. The same license applies to the files in results/.
